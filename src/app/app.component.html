@@ -1,3 +1,46 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane>
+    <ion-menu [disabled]="!isLoggedin">
+      <ion-header>
+        <ion-toolbar color="light">
+          <ion-title>Hashtek Consulting Inc.</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content color="light">
+        <div id="menu-material">
+          <div class="menu-header">
+            <p class="name">Welcome, {{loggedinUser}}</p>            
+            <img class="user-profile round" style="height:90px;max-width:90px;" [src]="chosenPicture || placeholder"
+              onerror="this.src='assets/img/avatar/girl-avatar.png'" />
+          </div>
+        </div>
+        <ion-list no-lines>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of memberPages">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" color="light">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>               
+          </ion-menu-toggle>
+        </ion-list>
+        <ion-item color="light">
+            <ion-button (click)= "logout()"> 
+                <ion-icon slot="start" name="log-out"></ion-icon>
+              Logout
+             </ion-button>
+        </ion-item>        
+      </ion-content>
+      <ion-footer>
+        <ion-toolbar color="light">
+          <ion-row align-items-center>            
+            <ion-col>
+                © 2018 Hashtek Consulting Services
+            </ion-col>
+          </ion-row>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>

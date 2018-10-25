@@ -1,0 +1,20 @@
+#menu-material {
+    .menu-header {
+      padding: 5px 15px;
+      background-image: url('../assets/img/misc/profile-background.jpg');
+      background-size: cover;
+      color: white;
+      .name {
+        font-weight: 500;
+        margin-bottom: 3px;       
+      }     
+    }
+    .user-profile {
+      max-width: 125px;height: 125px;
+      padding: .5em;
+      height: 12vh;
+    }  
+    ion-icon {
+      color: #777;
+    }
+  }
