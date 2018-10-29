@@ -19,7 +19,7 @@ export class NotificationPage implements OnInit {
 
   async getUserNotifications() {
     this.userNotifications = [];
-    const loading = await this.loadingCtrl.create({ spinner: 'lines-small', mode: 'ios' });
+    const loading = await this.loadingCtrl.create({ spinner: 'circles', mode: 'ios' });
     await loading.present();
     this.notificationSvc.getUserNotifications()
       .subscribe((resp: any) => {

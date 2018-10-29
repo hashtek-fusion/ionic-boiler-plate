@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, AlertController } from '@ionic/angular';
+import { UIHelper } from '../../utility/ui-helper';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage implements OnInit {
+export class RegisterPage extends UIHelper implements OnInit {
 
   user: {
     firstName: string;
@@ -17,33 +18,34 @@ export class RegisterPage implements OnInit {
   } = { firstName: '', lastName: '', email: '', password: '' };
 
 
-  constructor(private readonly authService: AuthenticationService, private readonly loadingCtrl: LoadingController) { }
+  constructor(private readonly authService: AuthenticationService,
+    alertCtrl: AlertController, loadingCtrl: LoadingController) {
+    super(alertCtrl, loadingCtrl);
+  }
 
   ngOnInit() {
   }
 
   async register() {
-    const loading = await this.loadingCtrl.create({ spinner: 'lines-small', mode: 'ios' });
+    const loading = await this.displaySpinner();
     await loading.present();
     const regResp = this.authService.register(this.user);
     regResp.subscribe((resp: any) => {
       // Post registration login the user automatically
-      const loginResp = this.authService.login({email: this.user.email, password: this.user.password});
+      const loginResp = this.authService.login({ email: this.user.email, password: this.user.password });
       loginResp.subscribe((loginResponse: any) => {
         this.authService.setToken(loginResponse.token, loginResponse.user);
         loading.dismiss();
       }, (errorResp) => { // Handling user login failure
-        console.log(errorResp);
         const error = errorResp.error ? errorResp.error.message || errorResp.message : errorResp.statusText || 'An error ocurred';
-        console.log(error);
         loading.dismiss();
+        this.displayErrorMsgAlert('Login Page', error, 'Login Failed');
       }
       );
     }, (errorResp) => {// Handling User registration failure
-      console.log(errorResp);
       const error = errorResp.error ? errorResp.error.message || errorResp.message : errorResp.statusText || 'An error ocurred';
-      console.log(error);
       loading.dismiss();
+      this.displayErrorMsgAlert('Registration Page', error, 'Registration Failed');
     }
     );
   }
