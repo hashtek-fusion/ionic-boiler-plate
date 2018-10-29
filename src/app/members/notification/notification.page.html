@@ -8,5 +8,13 @@
 </ion-header>
 
 <ion-content padding>
-
+  <ion-card *ngFor="let notification of userNotifications">
+    <ion-img src="/assets/img/misc/notification.jpg"></ion-img>
+    <ion-card-header>
+      {{notification.category.key}}
+    </ion-card-header>
+    <ion-card-content>
+      {{notification.content}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>

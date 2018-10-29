@@ -32,6 +32,7 @@ export class AppComponent {
 
   isLoggedin = false;
   loggedinUser = null;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -50,7 +51,7 @@ export class AppComponent {
       this.authService.authState.subscribe(state => {
         if (state) {
           this.isLoggedin = true;
-          this.loggedinUser = 'Rajesh';
+          this.getUserInfo();
           this.router.navigate(['members', 'dashboard']);
         } else {
           this.isLoggedin = false;
@@ -58,6 +59,11 @@ export class AppComponent {
         }
       });
     });
+  }
+
+  async getUserInfo() {
+    const user = await this.authService.getUser();
+    this.loggedinUser = `${user.firstName} ${user.lastName}`;
   }
 
   logout() {

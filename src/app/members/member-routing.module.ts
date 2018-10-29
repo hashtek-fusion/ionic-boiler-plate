@@ -9,6 +9,6 @@ const memberRoutes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(memberRoutes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class MemberRoutingModule { }
