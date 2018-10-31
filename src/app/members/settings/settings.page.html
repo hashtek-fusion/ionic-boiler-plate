@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <h4> Profile Settings</h4>
+  <ion-list>
+    <ion-item routerLink="/members/settings/password" detail=true>
+      Change Password
+    </ion-item>
+    <ion-item routerLink="/members/settings/picture" detail=true>
+      Change Profile Picture
+    </ion-item>
+    <ion-item routerLink="/members/settings/profile" detail=true>
+      Manage Profile
+    </ion-item>
+    <ion-item>
+      <ion-label> Enable Touch Id</ion-label>
+      <ion-toggle color="primary" mode="ios"></ion-toggle>
+    </ion-item>
+  </ion-list>
+  <h4> Notification & Alerts</h4>
+  <ion-list>
+    <ion-item>
+      <ion-label> Allow Push Notifications</ion-label>
+      <ion-toggle color="primary" mode="ios" checked=true></ion-toggle>
+    </ion-item>
+  </ion-list>
+</ion-content>

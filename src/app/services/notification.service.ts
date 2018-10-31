@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthenticationService } from './authentication.service';
 import { environment } from '../../environments/environment';
-import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { ErrorHandler } from './error-handler';
 
 @Injectable({
@@ -11,7 +9,7 @@ import { ErrorHandler } from './error-handler';
 })
 export class NotificationService extends ErrorHandler {
 
-  constructor(private readonly http: HttpClient, private readonly authService: AuthenticationService) {
+  constructor(private readonly http: HttpClient) {
     super();
   }
 
