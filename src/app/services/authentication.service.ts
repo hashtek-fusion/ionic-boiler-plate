@@ -54,6 +54,15 @@ export class AuthenticationService extends ErrorHandler {
       );
   }
 
+  getDisplayPicture = () => {
+    const pictureAPI = `${environment.api_server}/users/profile/picture`;
+    return this.http
+      .get(pictureAPI)
+      .pipe(
+        catchError(this.handleError<any>('UserLogin'))
+      );
+  }
+
   async setToken(token, user) {
     await this.storage.set(TOKEN_KEY, token);
     await this.storage.set(LOGGEDIN_USER, user);

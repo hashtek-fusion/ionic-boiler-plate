@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthenticationService } from './services/authentication.service';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -32,13 +33,15 @@ export class AppComponent {
 
   isLoggedin = false;
   loggedinUser = null;
+  chosenPicture: any;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private domSanitizer: DomSanitizer,
   ) {
     this.initializeApp();
   }
@@ -64,6 +67,12 @@ export class AppComponent {
   async getUserInfo() {
     const user = await this.authService.getUser();
     this.loggedinUser = `${user.firstName} ${user.lastName}`;
+    this.authService.getDisplayPicture()
+        .subscribe(resp => {
+          console.log('subscribe method called');
+          const santizeResp = this.domSanitizer.bypassSecurityTrustUrl(resp.img);
+          this.chosenPicture = santizeResp;
+        });
   }
 
   logout() {
