@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Platform } from '@ionic/angular';
-import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { ErrorHandler } from './error-handler';
-import { UserProfileDto } from '../../dto/user.profile.dto';
+import { UserProfileDto } from './user.profile.dto';
 
 const TOKEN_KEY = 'ionicv4-jwt-token';
 

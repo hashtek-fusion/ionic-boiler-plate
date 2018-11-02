@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/camera/ngx';
 import { File, FileEntry } from '@ionic-native/file/ngx';
-import { ProfileService } from '../../../services/profile.service';
+import { ProfileService } from '../services/profile.service';
 import { UIHelper } from '../../../utility/ui-helper';
 import { LoadingController, AlertController, ActionSheetController } from '@ionic/angular';
 import { WebView } from '@ionic-native/ionic-webview/ngx';

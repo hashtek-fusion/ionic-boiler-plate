@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { UIHelper } from '../../../utility/ui-helper';
-import { ProfileService } from '../../../services/profile.service';
+import { ProfileService } from '../services/profile.service';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../services/authentication.service';
-import { UserProfileDto } from '../../../../dto/user.profile.dto';
+import { UserProfileDto } from './user.profile.dto';
 
 @Component({
   selector: 'app-profile',

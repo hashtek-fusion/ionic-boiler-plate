@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserPasswordDto } from '../../../../dto/user.password.dto';
+import { UserPasswordDto } from './user.password.dto';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { UIHelper } from '../../../utility/ui-helper';
-import { ProfileService } from '../../../services/profile.service';
+import { ProfileService } from '../services/profile.service';
 import { Router } from '@angular/router';
 
 @Component({

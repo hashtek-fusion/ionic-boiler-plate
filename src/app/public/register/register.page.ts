@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { UIHelper } from '../../utility/ui-helper';
-import { RegistrationDto } from '../../../dto/registration.dto';
+import { RegistrationDto } from './registration.dto';
 
 @Component({
   selector: 'app-register',

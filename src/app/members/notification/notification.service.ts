@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { catchError } from 'rxjs/operators';
-import { ErrorHandler } from './error-handler';
+import { ErrorHandler } from '../../services/error-handler';
 
 @Injectable({
   providedIn: 'root'

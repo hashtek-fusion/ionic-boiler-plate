@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationService } from '../../services/notification.service';
+import { NotificationService } from './notification.service';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { UIHelper } from '../../utility/ui-helper';
 

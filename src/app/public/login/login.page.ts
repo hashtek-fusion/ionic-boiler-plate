@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { UIHelper } from '../../utility/ui-helper';
-import { LoginDto } from '../../../dto/login.dto';
+import { LoginDto } from './login.dto';
 
 @Component({
   selector: 'app-login',
