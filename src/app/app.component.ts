@@ -66,10 +66,10 @@ export class AppComponent {
 
   async getUserInfo() {
     const user = await this.authService.getUser();
+    this.authService.getDisplayPicture();
     this.loggedinUser = `${user.firstName} ${user.lastName}`;
-    this.authService.getDisplayPicture()
+    this.authService.profilePicture
         .subscribe(resp => {
-          console.log('subscribe method called');
           const santizeResp = this.domSanitizer.bypassSecurityTrustUrl(resp.img);
           this.chosenPicture = santizeResp;
         });

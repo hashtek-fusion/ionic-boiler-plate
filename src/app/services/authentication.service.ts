@@ -16,6 +16,7 @@ const LOGGEDIN_USER = 'ionicv4-auth-user';
 export class AuthenticationService extends ErrorHandler {
 
   authState = new BehaviorSubject(false);
+  profilePicture = new BehaviorSubject({img: ''});
 
   constructor(private readonly storage: Storage, private readonly platform: Platform, private readonly http: HttpClient) {
     super();
@@ -56,11 +57,14 @@ export class AuthenticationService extends ErrorHandler {
 
   getDisplayPicture = () => {
     const pictureAPI = `${environment.api_server}/users/profile/picture`;
-    return this.http
+    this.http
       .get(pictureAPI)
       .pipe(
         catchError(this.handleError<any>('UserLogin'))
-      );
+      )
+      .subscribe(resp => {
+        this.profilePicture.next(resp);
+      });
   }
 
   async setToken(token, user) {

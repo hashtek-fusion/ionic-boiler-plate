@@ -9,7 +9,7 @@
       <ion-content color="light">
         <div id="menu-material">
           <div class="menu-header">
-            <p class="name">Welcome, {{loggedinUser}}</p>            
+            <p class="name">Welcome, {{loggedinUser}}</p>
             <img class="user-profile round" style="height:90px;max-width:90px;" [src]="chosenPicture || placeholder"
               onerror="this.src='assets/img/avatar/girl-avatar.png'" />
           </div>
@@ -21,21 +21,19 @@
               <ion-label>
                 {{p.title}}
               </ion-label>
-            </ion-item>               
+            </ion-item>
           </ion-menu-toggle>
         </ion-list>
-        <ion-item color="light">
-            <ion-button (click)= "logout()"> 
-                <ion-icon slot="start" name="log-out"></ion-icon>
-              Logout
-             </ion-button>
-        </ion-item>        
+        <ion-button (click)="logout()" expand="block" size="default">
+          <ion-icon slot="end" name="log-out"></ion-icon>
+          Logout
+        </ion-button>
       </ion-content>
       <ion-footer>
         <ion-toolbar color="light">
-          <ion-row align-items-center>            
+          <ion-row align-items-center>
             <ion-col>
-                © 2018 HashTek Consulting Services
+              © 2018 HashTek Consulting Services
             </ion-col>
           </ion-row>
         </ion-toolbar>

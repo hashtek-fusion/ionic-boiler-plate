@@ -5,6 +5,7 @@ import { ProfileService } from '../../../services/profile.service';
 import { UIHelper } from '../../../utility/ui-helper';
 import { LoadingController, AlertController, ActionSheetController } from '@ionic/angular';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { AuthenticationService } from '../../../services/authentication.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class ProfilePictureComponent extends UIHelper implements OnInit {
   constructor(private camera: Camera, private imgFile: File,
     private readonly profileService: ProfileService,
     loadingCtrl: LoadingController, alertCtrl: AlertController, private webview: WebView,
-    private actionSheetCtrl: ActionSheetController) {
+    private actionSheetCtrl: ActionSheetController, private authService: AuthenticationService) {
     super(alertCtrl, loadingCtrl);
   }
 
@@ -63,6 +64,8 @@ export class ProfilePictureComponent extends UIHelper implements OnInit {
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: sourceType,
+      targetHeight: 100,
+      targetWidth: 100,
     };
     const imgResponse = await this.camera.getPicture(cameraOptions);
     try {
@@ -103,7 +106,9 @@ export class ProfilePictureComponent extends UIHelper implements OnInit {
     await loading.present();
     this.profileService.uploadPicture(data)
       .subscribe((resp: any) => {
+        this.authService.getDisplayPicture(); // Need to invoke to reflect the DP
         this.isUpload = false;
+        this.camera.cleanup();
         loading.dismiss();
       }, (errorResp) => {
         this.isUpload = false;
