@@ -6,9 +6,9 @@ import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { ErrorHandler } from './error-handler';
+import { UserProfileDto } from '../../dto/user.profile.dto';
 
 const TOKEN_KEY = 'ionicv4-jwt-token';
-const LOGGEDIN_USER = 'ionicv4-auth-user';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,8 @@ const LOGGEDIN_USER = 'ionicv4-auth-user';
 export class AuthenticationService extends ErrorHandler {
 
   authState = new BehaviorSubject(false);
-  profilePicture = new BehaviorSubject({img: ''});
+  profilePictureState = new BehaviorSubject({img: ''});
+  userProfileState = new BehaviorSubject<UserProfileDto>({});
 
   constructor(private readonly storage: Storage, private readonly platform: Platform, private readonly http: HttpClient) {
     super();
@@ -63,29 +64,25 @@ export class AuthenticationService extends ErrorHandler {
         catchError(this.handleError<any>('UserLogin'))
       )
       .subscribe(resp => {
-        this.profilePicture.next(resp);
+        this.profilePictureState.next(resp);
       });
   }
 
   async setToken(token, user) {
     await this.storage.set(TOKEN_KEY, token);
-    await this.storage.set(LOGGEDIN_USER, user);
     this.authState.next(true);
+    this.userProfileState.next(user);
   }
 
   getToken() {
     return this.storage.get(TOKEN_KEY);
   }
 
-  getUser() {
-    return this.storage.get(LOGGEDIN_USER);
-  }
-
   async logout() {
     await this.storage.remove(TOKEN_KEY);
-    await this.storage.remove(LOGGEDIN_USER);
     this.authState.next(false);
-    this.profilePicture.next({img: ''});
+    this.profilePictureState.next({img: ''});
+    this.userProfileState.next({});
   }
 
 }

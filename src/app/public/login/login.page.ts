@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { UIHelper } from '../../utility/ui-helper';
+import { LoginDto } from '../../../dto/login.dto';
 
 @Component({
   selector: 'app-login',
@@ -10,17 +11,16 @@ import { UIHelper } from '../../utility/ui-helper';
 })
 export class LoginPage extends UIHelper implements OnInit {
 
-  user: {
-    email: string;
-    password: string;
-  } = { email: '', password: '' };
+  user: LoginDto = {
+    email: '',
+    password: '',
+  };
 
   constructor(private readonly authService: AuthenticationService, loadingCtrl: LoadingController, alertCtrl: AlertController) {
     super(alertCtrl, loadingCtrl);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   async login() {
     const loading = await this.displaySpinner();
@@ -30,9 +30,7 @@ export class LoginPage extends UIHelper implements OnInit {
       this.authService.setToken(resp.token, resp.user);
       loading.dismiss();
     }, (errorResp) => {
-      console.log(errorResp);
       const error = errorResp.error ? errorResp.error.message || errorResp.message : errorResp.statusText || 'An error ocurred';
-      console.log(error);
       loading.dismiss();
       this.displayErrorMsgAlert('Login Page', error, 'Login Failed');
     }

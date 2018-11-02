@@ -7,7 +7,13 @@
     </ion-toolbar>
   </ion-header>
   <ion-content padding>
-    <p>
-      Profile works!
-    </p>
+      <form (ngSubmit)="updateProfile()" #registerForm="ngForm">
+          <ion-item>
+              <ion-input type="text" placeholder="First Name" [(ngModel)]="user.firstName" name="firstName" maxlength=50 required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input type="text" placeholder="Last Name" [(ngModel)]="user.lastName" name="lastName" maxlength=50></ion-input>
+            </ion-item>
+            <ion-button type="submit" expand="block" [disabled]="!registerForm.form.valid">Update Profile</ion-button>
+        </form>
   </ion-content>

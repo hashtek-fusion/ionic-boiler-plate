@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { UIHelper } from '../../utility/ui-helper';
+import { RegistrationDto } from '../../../dto/registration.dto';
 
 @Component({
   selector: 'app-register',
@@ -10,13 +11,7 @@ import { UIHelper } from '../../utility/ui-helper';
 })
 export class RegisterPage extends UIHelper implements OnInit {
 
-  user: {
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
-  } = { firstName: '', lastName: '', email: '', password: '' };
-
+  user: RegistrationDto = { firstName: '', lastName: '', email: '', password: '' };
 
   constructor(private readonly authService: AuthenticationService,
     alertCtrl: AlertController, loadingCtrl: LoadingController) {

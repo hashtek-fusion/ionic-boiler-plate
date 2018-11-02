@@ -27,7 +27,7 @@ export class ProfilePictureComponent extends UIHelper implements OnInit {
   }
 
   ngOnInit() {
-    this.picture = this.authService.profilePicture.value.img || '/assets/img/misc/consulting.jpg';
+    this.picture = this.authService.profilePictureState.value.img || '/assets/img/misc/consulting.jpg';
   }
 
   async displayActionSheet() {

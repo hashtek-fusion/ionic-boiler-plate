@@ -21,6 +21,6 @@
     <ion-item>
       <ion-input type="password" placeholder="Password" [(ngModel)]="user.password" name="password" maxlength=20 minlength=6 required></ion-input>
     </ion-item>
-    <ion-button type="submit" (click)="register()" expand="block" [disabled]="!registerForm.form.valid">Register</ion-button>
+    <ion-button type="submit" expand="block" [disabled]="!registerForm.form.valid">Register</ion-button>
   </form>
 </ion-content>

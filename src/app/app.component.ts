@@ -65,10 +65,12 @@ export class AppComponent {
   }
 
   async getUserInfo() {
-    const user = await this.authService.getUser();
     this.authService.getDisplayPicture();
-    this.loggedinUser = `${user.firstName} ${user.lastName}`;
-    this.authService.profilePicture
+    this.authService.userProfileState
+        .subscribe(resp => {
+          this.loggedinUser = `${resp.firstName} ${resp.lastName}`;
+        });
+    this.authService.profilePictureState
         .subscribe(resp => {
           const santizeResp = this.domSanitizer.bypassSecurityTrustUrl(resp.img);
           this.chosenPicture = santizeResp;

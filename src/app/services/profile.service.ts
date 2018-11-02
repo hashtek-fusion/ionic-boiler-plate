@@ -22,11 +22,21 @@ export class ProfileService extends ErrorHandler {
         );
   }
 
-  updateProfile() { // PUT
+  updateProfile(user) { // PUT
     const profileAPI = `${environment.api_server}/users/profile`;
+    return this.http
+          .put(profileAPI, user)
+          .pipe(
+            catchError(this.handleError<any>('ManageUserProfile'))
+          );
   }
 
-  changePassword() { // PUT
+  changePassword(user) {
     const passwordAPI = `${environment.api_server}/users/profile/password`;
+    return this.http
+          .put(passwordAPI, user)
+          .pipe(
+            catchError(this.handleError<any>('ChangeUserPassword'))
+          );
   }
 }

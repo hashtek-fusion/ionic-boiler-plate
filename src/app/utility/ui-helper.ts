@@ -17,6 +17,14 @@ export abstract class UIHelper {
         await alert.present();
     }
 
+    public async displaySuccessMsgAlert(page, successMsg= 'Operation Completed Successfully') {
+        const alert = await this.alertCtrl.create({
+            message: successMsg,
+            buttons: ['OK'], header: page, subHeader: 'Alert', mode: 'ios'
+        });
+        await alert.present();
+    }
+
     public async displaySpinner() {
         return await this.loadingCtrl.create({ spinner: 'circles', mode: 'ios' });
     }
