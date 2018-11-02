@@ -27,7 +27,7 @@ export class ProfilePictureComponent extends UIHelper implements OnInit {
   }
 
   ngOnInit() {
-    this.picture = '/assets/img/misc/consulting.jpg';
+    this.picture = this.authService.profilePicture.value.img || '/assets/img/misc/consulting.jpg';
   }
 
   async displayActionSheet() {
@@ -76,7 +76,6 @@ export class ProfilePictureComponent extends UIHelper implements OnInit {
       this.error = err;
     }
     this.fileUrl = imgResponse;
-    // this.picture = 'data:image/jpeg;charset=utf-8;base64,' + imgResponse;
     this.isUpload = true;
   }
 

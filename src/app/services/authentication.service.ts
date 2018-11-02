@@ -85,6 +85,7 @@ export class AuthenticationService extends ErrorHandler {
     await this.storage.remove(TOKEN_KEY);
     await this.storage.remove(LOGGEDIN_USER);
     this.authState.next(false);
+    this.profilePicture.next({img: ''});
   }
 
 }

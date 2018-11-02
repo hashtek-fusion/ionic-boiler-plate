@@ -32,8 +32,8 @@ export class AppComponent {
   ];
 
   isLoggedin = false;
-  loggedinUser = null;
-  chosenPicture: any;
+  loggedinUser: any;
+  chosenPicture: any = 'assets/img/avatar/girl-avatar.png';
 
   constructor(
     private platform: Platform,

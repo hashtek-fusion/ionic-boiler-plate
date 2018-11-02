@@ -2,21 +2,27 @@
   <ion-split-pane>
     <ion-menu [disabled]="!isLoggedin">
       <ion-header>
-        <ion-toolbar color="light">
+        <ion-toolbar>
           <ion-title>HashTek Consulting Inc.</ion-title>
         </ion-toolbar>
       </ion-header>
-      <ion-content color="light">
-        <div id="menu-material">
-          <div class="menu-header">
-            <p class="name">Welcome, {{loggedinUser}}</p>
-            <img class="user-profile round" style="height:90px;max-width:90px;" [src]="chosenPicture || placeholder"
-              onerror="this.src='assets/img/avatar/girl-avatar.png'" />
-          </div>
-        </div>
+      <ion-content>
+        <ion-row>
+          <ion-col size="2">
+            <div>
+              <ion-avatar slot="start"><img [src]="chosenPicture || placeholder" onerror="this.src='assets/img/avatar/girl-avatar.png'" />
+              </ion-avatar>
+            </div>
+          </ion-col>
+          <ion-col size="10">
+            <div class="welcome-msg">Welcome, {{loggedinUser}}</div>
+          </ion-col>
+        </ion-row>        
+        <div class="menu-header">            
+        </div>        
         <ion-list no-lines>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of memberPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" color="light">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
                 {{p.title}}
@@ -24,13 +30,13 @@
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
-        <ion-button (click)="logout()" expand="block" size="default">
+        <ion-button (click)="logout()" expand="block" size="default" padding> 
           <ion-icon slot="end" name="log-out"></ion-icon>
           Logout
         </ion-button>
       </ion-content>
       <ion-footer>
-        <ion-toolbar color="light">
+        <ion-toolbar>
           <ion-row align-items-center>
             <ion-col>
               © 2018 HashTek Consulting Services

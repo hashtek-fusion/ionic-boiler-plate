@@ -1,15 +1,22 @@
-<ion-header id="login-header">  
-</ion-header>
-
-<ion-content padding>
-  <form (ngSubmit)="login()" #loginForm="ngForm" novalidate>
-    <ion-item>      
-      <ion-input type="email" [(ngModel)]="user.email" placeholder="Email" autofocus=true maxlength=50 required name="email"></ion-input>
-    </ion-item>
-    <ion-item>      
-      <ion-input type="password" [(ngModel)]="user.password" placeholder="Password" maxlength=20 minlength=6 required name="password"></ion-input>
-    </ion-item>
-    <ion-button type="submit" [disabled]="!loginForm.form.valid" expand="block">Login</ion-button>
-  </form>
-  <ion-button expand="block" color="secondary" href="/register" routerDirection="forward">Register</ion-button>
+<ion-content id="loginForm">
+  <ion-row class="login-top-style">
+    <ion-col>
+      <div>          
+      </div>
+    </ion-col>
+  </ion-row> 
+  <ion-row>
+    <ion-col>
+        <form (ngSubmit)="login()" #loginForm="ngForm" novalidate>
+            <ion-item>      
+              <ion-input type="email" [(ngModel)]="user.email" placeholder="Email" autofocus=true maxlength=50 required name="email"></ion-input>
+            </ion-item>
+            <ion-item>      
+              <ion-input type="password" [(ngModel)]="user.password" placeholder="Password" maxlength=20 minlength=6 required name="password"></ion-input>
+            </ion-item>
+            <ion-button type="submit" [disabled]="!loginForm.form.valid" expand="block">Login</ion-button>
+          </form>
+          <ion-button expand="block" color="secondary" href="/register" routerDirection="forward">Register</ion-button>
+    </ion-col>
+  </ion-row> 
 </ion-content>
