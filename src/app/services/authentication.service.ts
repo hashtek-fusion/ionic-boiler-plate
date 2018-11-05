@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { ErrorHandler } from './error-handler';
+import { ErrorHandler } from '../utility/error-handler';
 import { UserProfileDto } from './user.profile.dto';
 
 const TOKEN_KEY = 'ionicv4-jwt-token';
