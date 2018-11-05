@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationService } from '../../services/auth/authentication.service';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { UIHelper } from '../../utility/ui-helper';
 import { LoginDto } from './login.dto';

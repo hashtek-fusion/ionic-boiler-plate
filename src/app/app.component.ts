@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { AuthenticationService } from './services/authentication.service';
+import { AuthenticationService } from './services/auth/authentication.service';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 

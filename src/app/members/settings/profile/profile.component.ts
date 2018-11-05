@@ -3,7 +3,7 @@ import { LoadingController, AlertController } from '@ionic/angular';
 import { UIHelper } from '../../../utility/ui-helper';
 import { ProfileService } from '../services/profile.service';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../../../services/authentication.service';
+import { AuthenticationService } from '../../../services/auth/authentication.service';
 import { UserProfileDto } from './user.profile.dto';
 
 @Component({

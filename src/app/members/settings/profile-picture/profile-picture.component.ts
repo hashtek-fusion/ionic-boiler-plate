@@ -5,7 +5,7 @@ import { ProfileService } from '../services/profile.service';
 import { UIHelper } from '../../../utility/ui-helper';
 import { LoadingController, AlertController, ActionSheetController } from '@ionic/angular';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
-import { AuthenticationService } from '../../../services/authentication.service';
+import { AuthenticationService } from '../../../services/auth/authentication.service';
 
 
 @Component({
