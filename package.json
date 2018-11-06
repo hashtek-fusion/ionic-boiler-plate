@@ -1,8 +1,7 @@
 {
-  "name": "ionic-boiler-plate",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "ionic4-boiler-plate",
+  "version": "1.0.0",
+  "author": "Rajesh Ramamoorthy",  
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
