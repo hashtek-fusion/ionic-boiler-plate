@@ -7,11 +7,17 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding>  
   <ion-card *ngFor="let notification of userNotifications">
-    <ion-img src="/assets/img/misc/notification.jpg"></ion-img>
     <ion-card-header>
-      {{notification.category.key}}
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="/assets/img/misc/notification.jpg" />
+        </ion-avatar>
+        <ion-label>
+          {{notification.category.key}}
+        </ion-label>
+      </ion-item>
     </ion-card-header>
     <ion-card-content>
       {{notification.content}}
